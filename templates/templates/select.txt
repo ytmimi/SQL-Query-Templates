@@ -1,0 +1,36 @@
+SELECT{{" "}} 
+
+{%- for item in fields -%} 
+
+	{{item}}{{ ", " if not loop.last}}{{ " " if loop.last}}
+
+{%- endfor -%} 
+
+	FROM{{" "}}
+	{%- if subquery -%}
+
+		({{subquery}}){{" "}}
+
+	{%- endif -%}
+
+	{{table_name}} 
+
+{%-if condition -%}
+
+	{{" "}}WHERE {% include './operators.txt' -%} 
+
+{%- endif%}
+
+{%- if order_by -%}
+
+	{{" "}}ORDER BY {% include './order_by.txt' -%}
+
+{%- endif -%}
+
+{%- if limit -%}
+	
+	{{" "}}LIMIT {% include './limit.txt' -%}
+
+{%- endif -%}
+
+;

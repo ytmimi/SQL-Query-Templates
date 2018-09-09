@@ -1,0 +1,15 @@
+INSERT INTO {{table_name}}(
+
+{%- for item in values -%} 
+
+	{{item}}{{ ", " if not loop.last }}
+
+{%- endfor -%}
+
+){{" "}}VALUES{{" "}}(
+
+{%- for item in values -%}
+
+	{{p}}{{ ", " if not loop.last }}
+
+{%- endfor -%});

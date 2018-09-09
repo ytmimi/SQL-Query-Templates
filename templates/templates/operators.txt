@@ -1,0 +1,27 @@
+{%-for value in condition -%}
+
+	{%- set op = operator[loop.index0] -%}
+
+	{%- if op in ['=', '<>', '!=', '<', '>', '<=', '>=', 'IN', 'LIKE'] -%}
+
+		{{value}} {{op}} {{p}}
+
+	{%- endif -%}
+
+	
+	{%- if op == 'BETWEEN' -%}
+		{{value}} {{op}} {{p}} AND {{p}}	
+	
+	{%- endif -%}
+	
+
+	{%- if not loop.last -%}
+
+		{%- set l_op = logic_operator[loop.index0] -%}
+
+		{{' '}}{{l_op}}{{' '}}
+
+	{%- endif -%}
+
+{%- endfor -%}
+

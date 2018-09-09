@@ -1,0 +1,21 @@
+{%- for field in order_by -%}
+
+	{%- set order = order[loop.index0] -%}
+
+	{%- if order -%}
+	
+		{{field}} {{order}}
+	
+	{%- else -%}
+
+		{{field}}
+
+	{%- endif -%}
+	
+	{%- if not loop.last -%}
+
+		{{', '}}
+
+	{%- endif -%}
+
+{%- endfor -%}

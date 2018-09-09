@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS {{table_name}} (
+
+{%- for item in values -%}
+
+	{{item.field}} {{item.data_type}}
+
+	{%- if item.extra -%} 
+
+		{{" "}}{{item.extra}}
+
+	{%- endif -%}
+	
+	{{ ", " if not loop.last}}
+
+{%- endfor -%});

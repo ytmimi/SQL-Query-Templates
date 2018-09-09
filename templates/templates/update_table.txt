@@ -1,0 +1,7 @@
+UPDATE {{table}} SET{{" "}} 
+
+{%- for item in fields -%}
+
+	{{item}} = {{p}}{{ ", " if not loop.last }}
+
+{%- endfor %} WHERE {{update_field}} = {{p}}
